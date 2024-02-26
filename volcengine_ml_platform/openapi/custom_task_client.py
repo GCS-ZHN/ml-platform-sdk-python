@@ -109,7 +109,7 @@ class CustomTaskClient(BaseClient):
         image_id: str,
         entrypoint_path: str,
         framework: str,
-        resource_group_id: str,
+        resource_queue_id: str,
         task_role_specs: list,
         # optional
         active_deadline_seconds: int = 432000,
@@ -144,7 +144,7 @@ class CustomTaskClient(BaseClient):
             },
             "EntrypointPath": entrypoint_path,
             "Framework": framework,
-            "ResourceGroupId": resource_group_id,
+            "ResourceQueueId": resource_queue_id,
             "TaskRoleSpecs": task_role_specs,
             # optional
             "ActiveDeadlineSeconds": active_deadline_seconds,
