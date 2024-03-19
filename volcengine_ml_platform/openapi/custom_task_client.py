@@ -131,6 +131,8 @@ class CustomTaskClient(BaseClient):
         sidecar_image: str = None,
         sidecar_resource_cpu: float = None,
         sidecar_resource_memory: float = None,
+        retry_options: dict = None,
+        priority: int = None
     ) -> dict:
 
         if active_deadline_seconds < 0:
@@ -172,7 +174,8 @@ class CustomTaskClient(BaseClient):
         CustomTaskClient.set_if_not_none(
             body, "SidecarResourceMemory", sidecar_resource_memory
         )
-
+        CustomTaskClient.set_if_not_none(body, "RetryOptions", retry_options)
+        CustomTaskClient.set_if_not_none(body, 'Priority', priority)
         if ak is not None and sk is not None:
             body["Credential"] = {"AccessKeyId": ak, "SecretAccessKey": sk}
 
